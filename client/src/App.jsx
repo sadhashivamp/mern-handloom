@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/user-role" element={<UserRole />} />
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/:role-registration" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/otp-varification" element={<OtpVarification />} />
         <Route path="/reset-password" element={<ResetPassword />} />
