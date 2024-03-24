@@ -19,30 +19,32 @@ const UserRole = () => {
                 <FaArrowLeft className="back-arrow-icon" />
             </Link>
             <div className="hero-section flex justify-center items-center h-screen">
+
                 <div className="container text-center">
+
                     <div className="flex justify-center">
                         <div className="flex flex-col">
                             <h1 className="text-4xl mb-4 font-mono">Select Your Role</h1>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                <div className="p-4">
-                                    <div className="border border-gray-300 rounded-lg shadow-md role-card">
+                            <div className="flex flex-col sm:flex-row justify-center  gap-4">
+                                <div  className="p-4 sm:w-full md:w-1/2 lg:w-1/3">
+                                    <div className="border border-gray-300 rounded-lg shadow-md p-4 role-card">
                                         <h2 className="font-bold">Owner</h2>
                                         <p className="font-serif">
-                                            Register as an owner to manage your handloom business.
+                                        Register as an owner to manage your handloom business. Showcase your products, connect with customers, and grow your business with Handlooms.
                                         </p>
                                         <Link to="/owner-registration">
                                             <button className="bg-blue-500 text-white px-4 py-2 block mt-4 w-full" onClick={() => handleSelectRole('owner')}>Register as Owner</button>
                                         </Link>
                                     </div>
                                 </div>
-                                <div className="p-4">
-                                    <div className="border border-gray-300 rounded-lg shadow-md role-card">
+                                <div  className="p-4 sm:w-full md:w-1/2 lg:w-1/3">
+                                    <div className="border border-gray-300 rounded-lg shadow-md p-4 role-card">
                                         <h2 className="font-bold">Worker</h2>
                                         <p>
-                                            Find job opportunities as a handloom worker.
+                                        Find job opportunities as a handloom worker. Enhance your skills, connect with like-minded individuals, and contribute to the handloom industry.
                                         </p>
                                         <Link to="/worker-registration">
-                                            <button className="bg-blue-500 text-white px-4 py-2 block mt-4 w-full" onClick={() => handleSelectRole('worker')}>Login as Worker</button>
+                                            <button className="bg-blue-500 text-white px-4 py-2 block mt-4 w-full" onClick={() => handleSelectRole('worker')}>Register as Worker</button>
                                         </Link>
                                     </div>
                                 </div>

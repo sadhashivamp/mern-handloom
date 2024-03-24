@@ -51,6 +51,8 @@
         background: rgba(var(--bs-link-color-rgb));
         color: #111;
         z-index: 999;
+        top: 1.5rem;
+        left: 1.5rem;
     }
 }
 
