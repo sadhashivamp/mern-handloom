@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* OwnerWorkerSelectionPage.css */
+.role-card {
+    height: 100%;
+    background-color: #9ad6bd !important;
+    /* Change to your desired background color */
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+    color: '#36454f !important';
+}
+
+.role-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.role-card .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.role-card .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.role-card .card-text {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+
+/* Arrow icon */
+.arrow-icon {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    border: 1px solid rgba(var(--bs-link-color-rgb));
+    padding: .5rem;
+    border-radius: 30%;
+}
+
+@media (hover: none) and (min-width: 340px) {
+    .arrow-icon {
+        background: rgba(var(--bs-link-color-rgb));
+        color: #111;
+        z-index: 999;
+    }
+}
+
+.arrow-icon:hover {
+    background: rgba(var(--bs-link-color-rgb));
+    color: #fff;
+}
