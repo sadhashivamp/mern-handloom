@@ -7,6 +7,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import OtpVarification from "./pages/OtpVarification";
 import ResetPassword from "./pages/ResetPassword";
 import Dashboard from "./pages/Dashboard";
+import PlaceSelect from "./pages/PlaceSelect";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/otp-varification" element={<OtpVarification />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/place-select" element={<PlaceSelect />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>

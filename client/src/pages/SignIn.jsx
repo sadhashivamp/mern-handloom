@@ -74,7 +74,7 @@ const SignIn = () => {
                             </button>
                         </form>
                         <div className="mt-3 flex justify-between">
-                            <Link to="/" className="text-blue-500">Forgot Password</Link>
+                            <Link to="/forgot-password" className="text-blue-500">Forgot Password</Link>
                             <Link to="/owner-registration" className="text-blue-500">Register</Link>
                         </div>
                     </div>
