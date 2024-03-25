@@ -1,45 +1,59 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
+import { Alert, Spinner } from "flowbite-react";
 
 const SignUp = () => {
   const { "role-registration": roleRegistration } = useParams();
   const role = roleRegistration ? roleRegistration.split("-")[0] : "owner";
 
   const [formData, setFormData] = useState({
-    username: "",
+    userName: "",
     phoneNumber: "",
     password: "",
     confirmPassword: "",
     role: role,
   });
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-
-    const { username, phoneNumber, password, confirmPassword, role } = formData;
-    console.log(
-      "formData",
-      username,
-      phoneNumber,
-      password,
-      confirmPassword,
-      role
-    );
-
-    setFormData({
-      username: "",
-      phoneNumber: "",
-      password: "",
-      confirmPassword: "",
-      role: "",
-    });
+    if (
+      !formData.userName ||
+      !formData.phoneNumber ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
+      return setErrorMessage("Please fill out all fields.");
+    }
+    try {
+      setLoading(true);
+      setErrorMessage(null);
+      const res = await fetch("/api/users/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        return setErrorMessage(data.message);
+      }
+      setLoading(false);
+      if (res.ok) {
+        navigate("/signin");
+      }
+    } catch (error) {
+      setErrorMessage(error.message);
+      setLoading(false);
+    }
   };
 
   return (
@@ -60,8 +74,8 @@ const SignUp = () => {
               <input
                 type="text"
                 placeholder="User Name"
-                name="username"
-                value={formData.username}
+                name="userName"
+                value={formData.userName}
                 onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded-md"
                 required
@@ -108,12 +122,31 @@ const SignUp = () => {
                 readOnly
               />
             </div>
-            <button
+            {/* <button
               type="submit"
               className="w-full bg-blue-500 text-white p-2 rounded-md"
             >
               Sign Up
+            </button> */}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-blue-500 text-white p-2 rounded-md"
+            >
+              {loading ? (
+                <>
+                  <Spinner size="sm" />
+                  <span className="pl-3">Loading...</span>
+                </>
+              ) : (
+                "Sign Up"
+              )}
             </button>
+            {errorMessage && (
+              <Alert className="mt-5" color="failure">
+                {errorMessage}
+              </Alert>
+            )}
           </form>
           <div className="mt-4 text-center">
             <Link to="/signin" className="text-blue-500">
